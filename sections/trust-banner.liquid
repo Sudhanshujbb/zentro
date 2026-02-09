@@ -1,0 +1,263 @@
+{% comment %}
+  Trusted By Section
+{% endcomment %}
+
+<section
+  class="trust-banner"
+  style="
+    --overlay-opacity: {{ section.settings.overlay_opacity |  divided_by: 10}};
+    --heading-color: {{ section.settings.heading_color }};
+    --text-color: {{ section.settings.text_color }};
+    --card-bg: {{ section.settings.card_bg }};
+    --icon-color: {{ section.settings.icon_color }};
+  "
+>
+  {% if section.settings.bg_image %}
+    <div
+      class="trust-bg"
+      style="background-image: url({{ section.settings.bg_image | image_url: width: 2000 }});"
+    ></div>
+  {% endif %}
+
+  <div class="trust-overlay"></div>
+
+  <div class="trust-container">
+    <div class="trust-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="trust-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <p class="trust-description">
+          {{ section.settings.description }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="trust-features">
+      {% for block in section.blocks %}
+        <div class="trust-card">
+          {% if block.settings.icon != blank %}
+            <div class="trust-icon">
+              <img
+                src="{{ block.settings.icon | image_url: width: 64 }}"
+                alt=""
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+
+          <div class="trust-text">
+            {{ block.settings.text }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+.trust-banner {
+  position: relative;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+.trust-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.trust-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--overlay-opacity));
+  z-index: 1;
+}
+
+.trust-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+.trust-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 48px;
+}
+
+.trust-heading {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 12px;
+  letter-spacing: 0.02em;
+}
+
+.trust-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+.trust-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.trust-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.trust-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.trust-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.trust-text {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #111;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .trust-features {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .trust-banner {
+    padding: 60px 16px;
+  }
+
+  .trust-card {
+    padding: 16px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Trusted By Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay darkness",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TRUSTED BY 3,000+ INSTAGRAMMERS, AGENCIES"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Wellness influencers and health enthusiasts trust Zentro to deliver products that actually work. Join thousands who’ve transformed their daily routines with our innovative solutions."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#2563eb"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Crafted with care to ensure safety for your health needs"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Trusted By Section",
+      "blocks": [
+        { "type": "feature" },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "100% vegan and cruelty-free. Zero compromises for a healthier you"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Science-backed formulations to support your health and wellness"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
