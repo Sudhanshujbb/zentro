@@ -455,6 +455,7 @@
       ],
       "name": "Trusted By Section",
       "settings": {
+        "bg_image": "shopify://shop_images/fb1dc1dfa10a5bbc0999d53bd470debedb92edee.jpg",
         "overlay_opacity": 4,
         "heading": "TRUSTED BY 3,000+ INSTAGRAMMERS, AGENCIES",
         "description": "Wellness influencers and health enthusiasts trust Zentro to deliver products that actually work. Join thousands who’ve transformed their daily routines with our innovative solutions.",
