@@ -376,18 +376,21 @@
         "image_Rrt8Pq": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Section_12.png",
             "image_link": ""
           }
         },
         "image_7Gnptw": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Section_11.png",
             "image_link": ""
           }
         },
         "image_KaDwB7": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Section_7.png",
             "image_link": ""
           }
         },
@@ -415,7 +418,7 @@
       "settings": {
         "eyebrow": "#DESIGNED FOR EVERYBODY",
         "heading": "Discover your perfect relaxation match",
-        "collection": "",
+        "collection": "frontpage",
         "products_limit": 3,
         "card_radius": 20,
         "bg_color": "#f3f4f6",
