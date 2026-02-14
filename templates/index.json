@@ -429,18 +429,21 @@
         "payment_icon_KXzFYX": {
           "type": "payment_icon",
           "settings": {
+            "icon": "shopify://shop_images/Frame.png",
             "label": "Secure payment"
           }
         },
         "payment_icon_7HVVLN": {
           "type": "payment_icon",
           "settings": {
+            "icon": "shopify://shop_images/MasterCard.png",
             "label": "Secure payment"
           }
         },
         "payment_icon_VckeR6": {
           "type": "payment_icon",
           "settings": {
+            "icon": "shopify://shop_images/PayPal.png",
             "label": "Secure payment"
           }
         },
