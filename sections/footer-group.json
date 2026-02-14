@@ -11,6 +11,12 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "footer_new":{
+      "type": "footer_new",
+      "settings": {
+
+      }
+    },
     "footer_m9NzUG": {
       "type": "footer",
       "blocks": {
@@ -205,6 +211,7 @@
     }
   },
   "order": [
+    "footer_new",
     "footer_m9NzUG",
     "footer_utilities_jLGE8U"
   ]
