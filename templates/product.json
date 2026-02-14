@@ -160,6 +160,10 @@
                   },
                   "blocks": {}
                 },
+                "judge_me_reviews_preview_badge_BeKnGa": {
+                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+                  "settings": {}
+                },
                 "icon_AYrpjn": {
                   "type": "icon",
                   "name": "t:names.icon",
@@ -197,6 +201,7 @@
               "block_order": [
                 "text_xrnftG",
                 "text_xrtNBq",
+                "judge_me_reviews_preview_badge_BeKnGa",
                 "icon_AYrpjn",
                 "price_tVjtKg"
               ]
