@@ -1,24 +1,54 @@
-<div class="slider-container">
+<div id="slider-{{ section.id }}" class="custom-slider">
   <div class="slider-wrapper">
     {% assign first = true %}
     {% for block in section.blocks %}
       <div class="slide">
         {% if block.type == 'video' %}
-          <a href="{{block.settings.video2_link}}" >
-          <video class="slide-image desktop" src="{{ block.settings.video_url.sources[1].url }}" controls autoplay muted loop
-          onmouseover="this.setAttribute('controls', 'true')"
-          onmouseout="this.removeAttribute('controls')"></video>
-          <video class="slide-image mobile" src="{{ block.settings.video_mobile_url.sources[1].url }}" controls autoplay muted loop
-          onmouseover="this.setAttribute('controls', 'true')"
-          onmouseout="this.removeAttribute('controls')"></video>
+          <a href="{{block.settings.video2_link}}">
+            <video
+              class="slide-image desktop"
+              src="{{ block.settings.video_url.sources[1].url }}"
+              controls
+              autoplay
+              muted
+              loop
+              onmouseover="this.setAttribute('controls', 'true')"
+              onmouseout="this.removeAttribute('controls')"
+            ></video>
+            <video
+              class="slide-image mobile"
+              src="{{ block.settings.video_mobile_url.sources[1].url }}"
+              controls
+              autoplay
+              muted
+              loop
+              onmouseover="this.setAttribute('controls', 'true')"
+              onmouseout="this.removeAttribute('controls')"
+            ></video>
           </a>
         {% elsif block.settings.image %}
-          <a href="{{block.settings.image_link}}" >
-          <img class="slide-video  desktop" src="{{ block.settings.image | img_url: 'master' }}" alt="Slide Image" 
-        {% if first %}loading="eager" fetchpriority="high"{% else %}loading="lazy" fetchpriority="low"{% endif %}>
-          
-          <img class="slide-video mobile" src="{{ block.settings.mobile_image | img_url: 'master' }}" alt="Slide Image"
-        {% if first %}loading="eager" fetchpriority="high"{% else %}loading="lazy" fetchpriority="low"{% endif %}>
+          <a href="{{block.settings.image_link}}">
+            <img
+              class="slide-video  desktop"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="Slide Image"
+              {% if first %}
+                loading="eager" fetchpriority="high"
+              {% else %}
+                loading="lazy" fetchpriority="low"
+              {% endif %}
+            >
+
+            <img
+              class="slide-video mobile"
+              src="{{ block.settings.mobile_image | img_url: 'master' }}"
+              alt="Slide Image"
+              {% if first %}
+                loading="eager" fetchpriority="high"
+              {% else %}
+                loading="lazy" fetchpriority="low"
+              {% endif %}
+            >
           </a>
         {% endif %}
         {% assign first = false %}
@@ -50,7 +80,8 @@
     min-width: 100%;
     transition: transform 0.6s ease;
   }
-  .slide img, .slide video {
+  .slide img,
+  .slide video {
     width: 100%;
   }
   .slider-dots {
@@ -63,7 +94,7 @@
     height: 6px;
     width: 6px;
     margin: 5px;
-    background-color: #C3C8CB;
+    background-color: #c3c8cb;
     border-radius: 50%;
     display: inline-block;
     cursor: pointer;
@@ -71,9 +102,10 @@
   .dot.active {
     height: 8px;
     width: 8px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
   }
-  .prev, .next {
+  .prev,
+  .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -84,172 +116,151 @@
     cursor: pointer;
     display: none;
   }
-  .prev { left: 10px; }
-  .next { right: 10px; }
+  .prev {
+    left: 10px;
+  }
+  .next {
+    right: 10px;
+  }
 
   .slide-image,
-.slide-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
+  .slide-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
 
   .desktop {
-  display: block;
-}
-
-.mobile {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .desktop {
-    display: none;
+    display: block;
   }
 
   .mobile {
-    display: block;
+    display: none;
   }
-  }
 
-</style>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const sliderWrapper = document.querySelector('.slider-wrapper');
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-
-    let index = 0;
-    let startX = 0, currentX = 0;
-    let isDragging = false;
-    let moved = false;
-    let autoSlideInterval = {{ section.settings.autoslide_time | default: 5 }} * 1000;;
-
-    function updateSlider() {
-        // sliderWrapper.style.transform = translateX(-${index * 100}%);
-        sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
-
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
+  @media (max-width: 768px) {
+    .desktop {
+      display: none;
     }
 
-    function resetAutoSlide() {
-        clearInterval(autoSlideInterval); 
-        autoSlideInterval = setInterval(nextSlide, 10000); 
+    .mobile {
+      display: block;
+    }
+  }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll('.custom-slider').forEach(function(sliderSection){
+
+    const sliderWrapper = sliderSection.querySelector('.slider-wrapper');
+    const slides = sliderSection.querySelectorAll('.slide');
+    const dots = sliderSection.querySelectorAll('.dot');
+    const prevBtn = sliderSection.querySelector('.prev');
+    const nextBtn = sliderSection.querySelector('.next');
+
+    if (!sliderWrapper || slides.length <= 1) return;
+
+    let index = 0;
+    let startX = 0;
+    let currentX = 0;
+    let moved = false;
+    let autoSlideInterval;
+
+    const autoSlideTime = {{ section.settings.autoslide_time | default: 5 }} * 1000;
+
+    function updateSlider() {
+      sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
     }
 
     function nextSlide() {
-        index = (index + 1) % slides.length;
-        updateSlider();
-        resetAutoSlide(); 
+      index = (index + 1) % slides.length;
+      updateSlider();
     }
 
     function prevSlide() {
-        index = (index - 1 + slides.length) % slides.length;
-        updateSlider();
-        resetAutoSlide(); 
-    }
-    
-    function autoSlide() {
-        autoSlideInterval = setInterval(nextSlide, autoSlideInterval);
+      index = (index - 1 + slides.length) % slides.length;
+      updateSlider();
     }
 
-    function handleTouchStart(event) {
-    startX = event.touches[0].clientX;
-    isDragging = false;
-    moved = false;
-    clearInterval(autoSlideInterval); 
-}
-
-    function handleTouchMove(event) {
-        currentX = event.touches[0].clientX;
-        if (Math.abs(startX - currentX) > 10) { 
-            isDragging = true;
-            moved = true;
-        }
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideInterval = setInterval(nextSlide, autoSlideTime);
     }
 
-    function handleTouchEnd() {
-    if (moved) {
-        let diff = startX - currentX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextSlide();
-            else prevSlide();
-        }
-    }
-    resetAutoSlide(); 
-   }
-
-   function handleMouseDown(event) {
-    event.preventDefault();
-    isDragging = false;
-    moved = false;
-    startX = event.clientX;
-    sliderWrapper.style.cursor = "grabbing";
-    clearInterval(autoSlideInterval); 
-   }
-
-    function handleMouseMove(event) {
-        if (event.buttons === 0) return; 
-        currentX = event.clientX;
-        if (Math.abs(startX - currentX) > 10) { 
-            isDragging = true;
-            moved = true;
-        }
+    function stopAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
     }
 
-    function handleMouseUp(event) {
-    event.preventDefault();
-    sliderWrapper.style.cursor = "grab";
-    if (moved) {
-        let diff = startX - currentX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextSlide();
-            else prevSlide();
-        }
-    }
-    resetAutoSlide(); 
-   }
+    /* Touch */
+    sliderWrapper.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      moved = false;
+      stopAutoSlide();
+    });
 
-    slides.forEach(slide => {
-        slide.addEventListener("click", function(event) {
-            if (isDragging) {
-                event.preventDefault(); 
-            } else {
-                const anchor = slide.querySelector("a");
-                if (anchor) {
-                    window.location.href = anchor.href;
-                }
-            }
-        });
+    sliderWrapper.addEventListener('touchmove', e => {
+      currentX = e.touches[0].clientX;
+      if (Math.abs(startX - currentX) > 10) moved = true;
+    });
+
+    sliderWrapper.addEventListener('touchend', () => {
+      if (!moved) return startAutoSlide();
+      const diff = startX - currentX;
+      if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+      startAutoSlide();
+    });
+
+    /* Mouse */
+    sliderWrapper.addEventListener('mousedown', e => {
+      startX = e.clientX;
+      moved = false;
+      stopAutoSlide();
+    });
+
+    sliderWrapper.addEventListener('mousemove', e => {
+      if (e.buttons !== 1) return;
+      currentX = e.clientX;
+      if (Math.abs(startX - currentX) > 10) moved = true;
+    });
+
+    sliderWrapper.addEventListener('mouseup', () => {
+      if (moved) {
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+      }
+      startAutoSlide();
     });
 
     dots.forEach(dot => {
-        dot.addEventListener('click', function() {
-            index = parseInt(this.dataset.index);
-            updateSlider();
-            resetAutoSlide(); 
-        });
+      dot.addEventListener('click', () => {
+        index = Number(dot.dataset.index);
+        updateSlider();
+        startAutoSlide();
+      });
     });
 
-    sliderWrapper.addEventListener('touchstart', handleTouchStart);
-    sliderWrapper.addEventListener('touchmove', handleTouchMove);
-    sliderWrapper.addEventListener('touchend', handleTouchEnd);
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      startAutoSlide();
+    });
 
-    sliderWrapper.addEventListener('mousedown', handleMouseDown);
-    sliderWrapper.addEventListener('mousemove', handleMouseMove);
-    sliderWrapper.addEventListener('mouseup', handleMouseUp);
-    sliderWrapper.addEventListener('mouseleave', handleMouseUp);
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      startAutoSlide();
+    });
 
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
+    updateSlider();
+    startAutoSlide();
 
-    autoSlide(); 
+  });
+
 });
 </script>
+
 
 {% schema %}
 {
