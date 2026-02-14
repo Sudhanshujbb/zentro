@@ -11,10 +11,18 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
-    "footer_new":{
+    "footer_new": {
       "type": "footer_new",
       "settings": {
-
+        "logo": "shopify://shop_images/logo.svg",
+        "heading": "<p>Your Wellness,<br/>Our Priority.</p>",
+        "show_newsletter": true,
+        "show_social": true,
+        "facebook_url": "#",
+        "instagram_url": "#",
+        "menu_1": "menu",
+        "menu_2": "others",
+        "show_payments": true
       }
     },
     "footer_m9NzUG": {
@@ -146,6 +154,7 @@
         "group_H6VpwJ",
         "email_signup_crihX7"
       ],
+      "disabled": true,
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
@@ -200,6 +209,7 @@
         "footer_policy_list_VCdnpa",
         "social_links_Ew63Kq"
       ],
+      "disabled": true,
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",
