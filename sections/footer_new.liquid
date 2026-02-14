@@ -147,7 +147,10 @@
 
     {% if section.settings.show_payments %}
       <div class="footer-payments">
-        {{ shop.enabled_payment_types | payment_type_svg_tag }}
+        <img src="{{ 'Frame.svg' | asset_url }}" alt="Icon">
+        <img src="{{ 'MasterCard.svg' | asset_url }}" alt="Icon">
+        <img src="{{ 'PayPal.svg' | asset_url }}" alt="Icon">
+        {% comment %} {{ shop.enabled_payment_types | payment_type_svg_tag }} {% endcomment %}
       </div>
     {% endif %}
   </div>
@@ -310,6 +313,12 @@
   gap: 20px;
   font-size: 14px;
   opacity: .8;
+}
+
+.footer-payments{
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
 .footer-payments svg {
