@@ -164,6 +164,21 @@
                   "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
                   "settings": {}
                 },
+                "feature_tags_niM4xD": {
+                  "type": "feature-tags",
+                  "name": "Feature Tags",
+                  "settings": {
+                    "metafield_namespace": "custom",
+                    "metafield_key": "features",
+                    "layout": "flex",
+                    "spacing": 16,
+                    "margin_top": 0,
+                    "margin_bottom": 24,
+                    "padding_top": 0,
+                    "padding_bottom": 0
+                  },
+                  "blocks": {}
+                },
                 "price_tVjtKg": {
                   "type": "price",
                   "settings": {
@@ -191,6 +206,7 @@
                 "text_xrnftG",
                 "text_xrtNBq",
                 "judge_me_reviews_preview_badge_BeKnGa",
+                "feature_tags_niM4xD",
                 "price_tVjtKg"
               ]
             },
