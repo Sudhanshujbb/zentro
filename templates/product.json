@@ -491,10 +491,66 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "safe_checkout_gurantee_tnGMhE": {
+      "type": "safe-checkout-gurantee",
+      "blocks": {
+        "payment_icon_CWezqq": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/Frame.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_Fg3Fma": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/MasterCard.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_CRFzEz": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/PayPal.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_Uikx3X": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_VMyRXN": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_CWezqq",
+        "payment_icon_Fg3Fma",
+        "payment_icon_CRFzEz",
+        "payment_icon_Uikx3X",
+        "payment_icon_VMyRXN"
+      ],
+      "name": "Safe Checkout & Guarantee",
+      "settings": {
+        "eyebrow": "#GUARANTEED SAFE CHECKOUT",
+        "heading": "7-Money Back Guarantee",
+        "description": "We're so confident in our products' promise, we offer a 7-day money-back guarantee. Not satisfied? Get a full refund—no questions asked.",
+        "bg_color": "#fff6ea",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "badge_color": "#111827"
+      }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "safe_checkout_gurantee_tnGMhE"
   ]
 }
