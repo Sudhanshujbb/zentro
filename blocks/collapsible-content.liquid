@@ -1,0 +1,311 @@
+{% liquid
+  assign block_settings = block.settings
+  assign metafield_namespace = block_settings.metafield_namespace
+  assign metafield_key = block_settings.metafield_key
+  assign metafield = product.metafields[metafield_namespace][metafield_key]
+%}
+
+<div
+  class="collapsible-content collapsible-content--{{ block.id }}{% if block_settings.inherit_color_scheme == false %} color-{{ block_settings.color_scheme }}{% endif %}"
+  style="
+    {% render 'spacing-style', settings: block_settings %}
+  "
+  {{ block.shopify_attributes }}
+>
+  <accordion-custom {% if block_settings.open_by_default %}open-by-default-on-desktop open-by-default-on-mobile{% endif %}>
+    <details
+      class="collapsible-content__details"
+      {% if block_settings.open_by_default %}open{% endif %}
+    >
+      <summary class="collapsible-content__header">
+        <span class="collapsible-content__title">{{ block_settings.heading }}</span>
+        <span class="svg-wrapper icon-caret icon-animated">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </summary>
+
+      <div class="collapsible-content__body">
+        {% if block_settings.description != blank %}
+          <div class="collapsible-content__text">
+            {{ block_settings.description }}
+          </div>
+        {% endif %}
+
+        {% if metafield %}
+          <div class="collapsible-content__tags">
+            {% for entry in metafield.value %}
+              <div class="collapsible-content__tag-item">
+                {% if entry.tag_image %}
+                  <div class="collapsible-content__tag-image">
+                    <img
+                      src="{{ entry.tag_image | image_url: width: 120 }}"
+                      alt="{{ entry.tag_label }}"
+                      width="60"
+                      height="60"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+                {% if entry.tag_label %}
+                  <span class="collapsible-content__tag-label">{{ entry.tag_label }}</span>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </details>
+  </accordion-custom>
+</div>
+
+{% stylesheet %}
+  .collapsible-content {
+    width: 100%;
+  }
+
+  .collapsible-content__details {
+    border: var(--style-border-width, 1px) solid var(--color-border, #e0e0e0);
+    border-radius: var(--radius-border, 8px);
+    overflow: hidden;
+  }
+
+  .collapsible-content__details[open] {
+    border-color: var(--color-border-active, #0000ff);
+  }
+
+  .collapsible-content__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-md, 16px);
+    cursor: pointer;
+    background-color: var(--color-background, #ffffff);
+    transition: background-color 0.2s ease;
+    user-select: none;
+    min-height: var(--minimum-touch-target, 44px);
+  }
+
+  .collapsible-content__header:hover {
+    background-color: var(--color-background-hover, #f5f5f5);
+  }
+
+  .collapsible-content__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--color-text, #000);
+  }
+
+  .icon-caret {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .collapsible-content__details[open] .icon-caret {
+    transform: rotate(180deg);
+  }
+
+  .collapsible-content__body {
+    padding: var(--padding-md, 16px);
+    background-color: var(--color-background-secondary, #fafafa);
+    border-top: var(--style-border-width, 1px) solid var(--color-border, #e0e0e0);
+  }
+
+  .collapsible-content__text {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text, #000);
+  }
+
+  .collapsible-content__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .collapsible-content__tag-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background-color: var(--color-background, #ffffff);
+    border: 1px solid var(--color-border, #e0e0e0);
+    border-radius: 8px;
+    text-align: center;
+    min-width: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .collapsible-content__tag-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-text, #000);
+  }
+
+  .collapsible-content__tag-image {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-background-secondary, #f5f5f5);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .collapsible-content__tag-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+  }
+
+  .collapsible-content__tag-label {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-text, #000);
+    word-break: break-word;
+  }
+
+  @media (max-width: 768px) {
+    .collapsible-content__header {
+      padding: 12px;
+    }
+
+    .collapsible-content__title {
+      font-size: 15px;
+    }
+
+    .collapsible-content__body {
+      padding: 12px;
+    }
+
+    .collapsible-content__tags {
+      gap: 10px;
+    }
+
+    .collapsible-content__tag-item {
+      min-width: 90px;
+      padding: 10px;
+    }
+
+    .collapsible-content__tag-image {
+      width: 50px;
+      height: 50px;
+    }
+
+    .collapsible-content__tag-label {
+      font-size: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Collapsible Content",
+  "tag": "div",
+  "class": "collapsible-content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shipping & Warranty",
+      "placeholder": "Enter heading text"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add your description text here</p>",
+    },
+    {
+      "type": "header",
+      "content": "Metafield Settings"
+    },
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield Namespace",
+      "placeholder": "custom",
+      "info": "e.g., 'custom' (the namespace part of your metafield)"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield Key",
+      "placeholder": "warranty_shipping_tags",
+      "info": "e.g., 'warranty_shipping_tags' (the key of your metafield)"
+    },
+    {
+      "type": "header",
+      "content": "Display Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_by_default",
+      "label": "Open by default",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "inherit_color_scheme",
+      "label": "Inherit color scheme",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top margin",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom margin",
+      "default": 16
+    }
+  ]
+}
+{% endschema %}

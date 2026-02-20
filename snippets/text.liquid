@@ -132,6 +132,10 @@
     text-wrap: var(--text-wrap);
   }
 
+  accordion-custom .text-block > *{
+    max-inline-size: unset;
+  }
+
   .text-block:not(.text-block--full-width).rte,
   .text-block:not(.text-block--full-width).paragraph {
     /* Safari doesn't support pretty, so fallback to balance */
