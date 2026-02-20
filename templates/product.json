@@ -548,6 +548,25 @@
         "badge_color": "#111827"
       }
     },
+    "slideshow_banner2_MMcBJE": {
+      "type": "slideshow-banner2",
+      "blocks": {
+        "image_QB4MLN": {
+          "type": "image",
+          "settings": {
+            "image": "{{ product.metafields.custom.banner_desktop.value }}",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_QB4MLN"
+      ],
+      "name": "Custom Slider",
+      "settings": {
+        "autoslide_time": 5
+      }
+    },
     "faq_edTaUL": {
       "type": "faq",
       "blocks": {
@@ -593,6 +612,7 @@
     "main",
     "product_recommendations_qggXJq",
     "safe_checkout_gurantee_tnGMhE",
+    "slideshow_banner2_MMcBJE",
     "faq_edTaUL"
   ]
 }
