@@ -20,6 +20,9 @@
     when 'carousel'
       assign classes = 'resource-list--carousel'
   endcase
+  
+  assign enable_overlay = true
+  assign gradient_color = block_settings.overlay_gradient_color
 %}
 
 {% comment %}
@@ -46,6 +49,7 @@
       block-resource-list
       spacing-style
       gap-style
+      {% if enable_overlay %}resource-list--card-overlay{% endif %}
     "
     style="
       {%  render 'spacing-style', settings: block_settings %}
@@ -54,6 +58,7 @@
       --resource-list-row-gap-desktop: {{ block_settings.rows_gap }}px;
       --resource-list-columns-mobile: repeat(auto-fill, minmax(9.25rem, 1fr));
       --border-radius: {{ block_settings.border_radius }}px;
+      {% if enable_overlay %}--card-overlay-gradient: {{ gradient_color | default: 'rgba(0, 0, 0, 0.3)' }};{% endif %}
     "
   >
     <div class="section-resource-list__content">
@@ -192,6 +197,132 @@
     background-color: var(--color-foreground);
     opacity: var(--skeleton-opacity);
     border-radius: 4px;
+  }
+
+  /* Overlay layout styles */
+  .resource-list--card-overlay product-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+  }
+
+  .resource-list--card-overlay .product-card__link {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  /* Product gallery fills card as background */
+  .resource-list--card-overlay .card-gallery,
+  .resource-list--card-overlay slideshow-wrapper {
+    position: absolute !important;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 1;
+    border: none !important;
+  }
+
+  /* Overlay content positioned at bottom with gradient */
+  .resource-list--card-overlay .product-card__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 24px 16px 16px !important;
+    margin: 0 !important;
+    border: none !important;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      var(--card-overlay-gradient, rgba(0, 0, 0, 0.6)) 100%
+    ) !important;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 8px !important;
+    min-height: 50%;
+    width: 100%;
+  }
+
+  /* Make all text content white */
+  .resource-list--card-overlay .product-card__content {
+    color: white;
+  }
+
+  .resource-list--card-overlay .product-card__content * {
+    color: white !important;
+  }
+
+  .resource-list--card-overlay .product-card__content h2,
+  .resource-list--card-overlay .product-card__content h3,
+  .resource-list--card-overlay .product-card__content h4,
+  .resource-list--card-overlay .product-card__content h5,
+  .resource-list--card-overlay .product-card__content h6,
+  .resource-list--card-overlay .product-card__content p,
+  .resource-list--card-overlay .product-card__content span {
+    color: white !important;
+    margin: 0 !important;
+  }
+
+  /* Price styling */
+  .resource-list--card-overlay .component-price,
+  .resource-list--card-overlay [class*="price"] {
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  /* Review/rating styling */
+  .resource-list--card-overlay [class*="review"],
+  .resource-list--card-overlay [class*="rating"] {
+    font-size: 12px;
+    display: flex;
+    gap: 4px;
+  }
+
+  /* Buy buttons */
+  .resource-list--card-overlay [class*="button"],
+  .resource-list--card-overlay button {
+    margin-top: 8px !important;
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid white !important;
+    color: white !important;
+    border-radius: 4px;
+    padding: 8px 12px !important;
+  }
+
+  .resource-list--card-overlay [class*="button"]:hover,
+  .resource-list--card-overlay button:hover {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* Badge positioning */
+  .resource-list--card-overlay .product-badges {
+    z-index: 15 !important;
+    position: absolute !important;
+  }
+
+  /* Hide elements we don't want */
+  .resource-list--card-overlay .product-grid-view-zoom-out--details {
+    display: none;
+  }
+
+  .resource-list--card-overlay .product-title {
+    display: none;
+  }
+
+  /* Fade badges area */
+  .resource-list--card-overlay .product-badges::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 50%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
   }
 {% endstylesheet %}
 
@@ -425,6 +556,24 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Card Overlay Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_card_overlay",
+      "label": "Enable overlay layout",
+      "info": "Position price, review, and buttons over the product image",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "overlay_gradient_color",
+      "label": "Gradient overlay color",
+      "default": "#00000080",
+      "visible_if": "{{ block.settings.enable_card_overlay == true }}"
     }
   ],
   "presets": [

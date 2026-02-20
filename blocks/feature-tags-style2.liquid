@@ -1,0 +1,198 @@
+{%- liquid
+  assign metafield_namespace = block.settings.metafield_namespace
+  assign metafield_key = block.settings.metafield_key
+  assign metafield = product.metafields[metafield_namespace][metafield_key]
+  
+  assign spacing = block.settings.spacing
+  assign bg_color = block.settings.bg_color
+-%}
+{% if metafield.value %}
+  <div
+    class="feature-tags-style2"
+    style="
+      --fts2-bg: {{ bg_color | default: '#f5f5f5' }};
+      gap: {{ spacing }}px;
+      {% render 'spacing-style', settings: block.settings %}
+    "
+    {{ block.shopify_attributes }}
+  >
+    {% for entry in metafield.value %}
+      <div class="feature-tags-style2__item">
+        {% if entry.tag_image %}
+          <div class="feature-tags-style2__icon-wrapper">
+            <img
+              src="{{ entry.tag_image | image_url: width: 60 }}"
+              alt="{{ entry.tag_label }}"
+              width="32"
+              height="32"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+
+        {% if entry.tag_label %}
+          <span class="feature-tags-style2__label">{{ entry.tag_label }}</span>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <style>
+    .feature-tags-style2 {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+    }
+
+    .feature-tags-style2__item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background-color: var(--fts2-bg, var(--color-background-secondary, #f5f5f5));
+      border-radius: 24px;
+      border: 1px solid var(--color-border, #e0e0e0);
+    }
+
+    .feature-tags-style2__icon-wrapper {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-text, #000);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .feature-tags-style2__icon-wrapper img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .feature-tags-style2__label {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--color-text, #000);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .feature-tags-style2 {
+        gap: 10px;
+      }
+
+      .feature-tags-style2__item {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .feature-tags-style2__icon-wrapper {
+        width: 32px;
+        height: 32px;
+      }
+
+      .feature-tags-style2__icon-wrapper img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .feature-tags-style2__label {
+        font-size: 13px;
+      }
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Feature Tags - Style 2",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "metafield_namespace",
+      "label": "Metafield Namespace",
+      "placeholder": "custom",
+      "info": "e.g., 'custom' (the namespace part of your metafield)"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "Metafield Key",
+      "placeholder": "product_features",
+      "info": "e.g., 'product_features' (the key of your metafield)"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Pill background color",
+      "default": "#f5f5f5",
+      "info": "Background color for each tag pill"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap Between Items",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Tags - Style 2"
+    }
+  ]
+}
+{% endschema %}
