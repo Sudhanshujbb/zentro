@@ -1,6 +1,9 @@
 <style>
   .product-specs {
-    padding: 80px 0;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
   }
 
   .ps-top {
@@ -62,6 +65,12 @@
   }
 
   @media (max-width: 768px) {
+    .product-specs{
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        padding-left: {{ section.settings.padding_left_mobile }}px;
+        padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
     .ps-highlight {
       grid-template-columns: 1fr;
     }
@@ -84,10 +93,6 @@
         {{ section.settings.gradient_color_1 }},
         {{ section.settings.gradient_color_2 }}
       );
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-      padding-left: {{ section.settings.padding_left }}px;
-      padding-right: {{ section.settings.padding_right }}px;
     "
   >
     <div class="page-width">
@@ -200,6 +205,42 @@
       "max": 150,
       "step": 5,
       "default": 80
+    },
+    {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile Padding Top",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+        },
+        {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile Padding Bottom",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+        },
+        {
+        "type": "range",
+        "id": "padding_left_mobile",
+        "label": "Mobile Padding Left",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+        },
+        {
+        "type": "range",
+        "id": "padding_right_mobile",
+        "label": "Mobile Padding Right",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
     }
   ],
   "presets": [
