@@ -454,6 +454,80 @@
         "padding-block-end": 0
       }
     },
+    "custom_marquee_AYBVHk": {
+      "type": "custom-marquee",
+      "blocks": {
+        "text_dPjJ4x": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_erzdxy": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_tCtALD": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_f3rmDW": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_iwF8qR": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_MyVwg8": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        }
+      },
+      "block_order": [
+        "text_dPjJ4x",
+        "text_erzdxy",
+        "text_tCtALD",
+        "text_f3rmDW",
+        "text_iwF8qR",
+        "text_MyVwg8"
+      ],
+      "name": "Custom Marquee",
+      "settings": {
+        "bg_color": "#000000",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "speed": 20,
+        "text_color": "#ffffff",
+        "font_size": 14,
+        "font_weight": "600",
+        "letter_spacing": 1,
+        "text_transform": "uppercase"
+      }
+    },
+    "product_specs_ykFb4p": {
+      "type": "product-specs",
+      "name": "Product Specs",
+      "settings": {
+        "gradient_color_1": "#f5f5f5",
+        "gradient_color_2": "#ffffff",
+        "gradient_angle": 180,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_left": 80,
+        "padding_right": 80
+      }
+    },
     "1771606091ce0b4520": {
       "type": "_blocks",
       "blocks": {
@@ -785,14 +859,85 @@
         "text_color": "#4b5563",
         "divider_color": "#e5e7eb"
       }
+    },
+    "custom_marquee_VgwRWG": {
+      "type": "custom-marquee",
+      "blocks": {
+        "text_THqbJn": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_cePggj": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_NNC4zg": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_HqG8Ng": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_Xtezyr": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_MLAkRt": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_X43G33": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        }
+      },
+      "block_order": [
+        "text_THqbJn",
+        "text_cePggj",
+        "text_NNC4zg",
+        "text_HqG8Ng",
+        "text_Xtezyr",
+        "text_MLAkRt",
+        "text_X43G33"
+      ],
+      "name": "Custom Marquee",
+      "settings": {
+        "bg_color": "#eaf586",
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "speed": 20,
+        "text_color": "#000000",
+        "font_size": 14,
+        "font_weight": "600",
+        "letter_spacing": 1,
+        "text_transform": "uppercase"
+      }
     }
   },
   "order": [
     "main",
+    "custom_marquee_AYBVHk",
+    "product_specs_ykFb4p",
     "1771606091ce0b4520",
     "product_recommendations_qggXJq",
     "safe_checkout_gurantee_tnGMhE",
     "slideshow_banner2_MMcBJE",
-    "faq_edTaUL"
+    "faq_edTaUL",
+    "custom_marquee_VgwRWG"
   ]
 }
