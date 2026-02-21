@@ -7,13 +7,24 @@
   }
 
   .ps-top {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 40px;
     text-align: center;
+    justify-content: center;
+    margin: auto;
     margin-bottom: 60px;
+    margin-top: 30px;
   }
 
+  .ps-heading > *{
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ps-icon{
+    max-width: 25%;
+  }
   .ps-icon img {
     /* height: 60px; */
     margin-bottom: 10px;
@@ -96,6 +107,13 @@
     "
   >
     <div class="page-width">
+
+        {% if section.settings.heading != blank %}
+            <div class="ps-heading">
+                {{ section.settings.heading }} 
+            </div>
+        {% endif %}    
+
       {% if product.metafields.custom.top_features.value != blank %}
         <div class="ps-top">
           {% for feature in product.metafields.custom.top_features.value limit: 4 %}
@@ -147,6 +165,12 @@
 {
   "name": "Product Specs (Metafield)",
   "settings": [
+    {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "<h2>What's Included</h2>"
+    },
     {
       "type": "color",
       "id": "gradient_color_1",
