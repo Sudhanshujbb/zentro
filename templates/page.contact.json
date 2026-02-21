@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -68,6 +69,7 @@
         "title",
         "content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
@@ -98,10 +100,10 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
+                "label": "Leave us a Message",
+                "style_class": "button-secondary",
+                "width": "custom",
+                "custom_width": 44,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
               },
@@ -142,10 +144,122 @@
         "padding-block-start": 32,
         "padding-block-end": 84
       }
+    },
+    "relaxation_section_riKY6j": {
+      "type": "relaxation-section",
+      "name": "Relaxation Products Collection",
+      "settings": {
+        "eyebrow": "#DESIGNED FOR EVERYBODY",
+        "heading": "Discover your perfect relaxation match",
+        "collection": "frontpage",
+        "products_limit": 3,
+        "card_radius": 20,
+        "bg_color": "#f3f4f6",
+        "text_color": "#111827",
+        "accent_color": "#eaff6a"
+      }
+    },
+    "safe_checkout_gurantee_CaqL6D": {
+      "type": "safe-checkout-gurantee",
+      "blocks": {
+        "payment_icon_FNDHFV": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/PayPal.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_rBxdjy": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/MasterCard.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_CNjFih": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/Frame.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_Tddyk7": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_itE8QB": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_FNDHFV",
+        "payment_icon_rBxdjy",
+        "payment_icon_CNjFih",
+        "payment_icon_Tddyk7",
+        "payment_icon_itE8QB"
+      ],
+      "name": "Safe Checkout & Guarantee",
+      "settings": {
+        "eyebrow": "#GUARANTEED SAFE CHECKOUT",
+        "heading": "7-Money Back Guarantee",
+        "description": "We're so confident in our products' promise, we offer a 7-day money-back guarantee. Not satisfied? Get a full refund—no questions asked.",
+        "bg_color": "#fff6ea",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "badge_color": "#111827"
+      }
+    },
+    "faq_cjCxX4": {
+      "type": "faq",
+      "blocks": {
+        "faq_Ln8BgJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products safe and tested?",
+            "answer": "<p>Absolutely! All our products undergo rigorous third-party testing for quality, purity, and safety. We follow strict manufacturing standards and source only premium, certified ingredients.</p>"
+          }
+        },
+        "faq_A9XWti": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return and refund policy?",
+            "answer": "<p>We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.</p>"
+          }
+        },
+        "faq_PzXM7f": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I track my order?",
+            "answer": "<p>Yes! Once your order ships, you'll receive a tracking link via email and SMS.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_Ln8BgJ",
+        "faq_A9XWti",
+        "faq_PzXM7f"
+      ],
+      "name": "FAQ – Help Section",
+      "settings": {
+        "eyebrow": "#ALL THE HELP YOU NEED",
+        "heading": "We know you are curious!",
+        "bg_color": "#fdf7ee",
+        "heading_color": "#111827",
+        "text_color": "#4b5563",
+        "divider_color": "#e5e7eb"
+      }
     }
   },
   "order": [
     "main",
-    "form"
+    "form",
+    "relaxation_section_riKY6j",
+    "safe_checkout_gurantee_CaqL6D",
+    "faq_cjCxX4"
   ]
 }
