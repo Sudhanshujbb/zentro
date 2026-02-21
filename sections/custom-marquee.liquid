@@ -120,7 +120,7 @@
 }
 {% endschema %}
 
-<div class="custom-marquee"
+<div class="custom-marquee-{{ section.id }}"
      style="
        background: {{ section.settings.bg_color }};
        padding-top: {{ section.settings.padding_top }}px;
@@ -149,7 +149,7 @@
 </div>
 
 <style>
-.custom-marquee {
+.custom-marquee-{{section.id}} {
   width: 100%;
   overflow: hidden;
 }
@@ -159,13 +159,13 @@
   white-space: nowrap;
 }
 
-.marquee-track {
+.custom-marquee-{{section.id}} .marquee-track {
   display: inline-flex;
   gap: 40px;
   animation: marquee-scroll linear infinite;
 }
 
-.marquee-item {
+.custom-marquee-{{section.id}} .marquee-item {
   color: {{ section.settings.text_color }};
   font-size: {{ section.settings.font_size }}px;
   font-weight: {{ section.settings.font_weight }};
