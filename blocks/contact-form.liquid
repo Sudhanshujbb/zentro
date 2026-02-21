@@ -43,77 +43,68 @@
       </div>
     {%- endif -%}
 
-    <div class="contact-form__form-row">
-      <label
-        class="visually-hidden"
-        for="ContactForm-name"
-      >
-        {{- 'blocks.contact_form.name' | t -}}
-      </label>
-      <input
-        type="text"
-        id="ContactForm-name"
-        class="contact-form__input"
-        autocomplete="name"
-        name="contact[name]"
-        value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-        placeholder="{{ 'blocks.contact_form.name' | t }}"
-      >
+    <div class="contact-form__grid">
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="ContactForm-name">{{- 'blocks.contact_form.name' | t -}}</label>
+        <input
+          type="text"
+          id="ContactForm-name"
+          class="contact-form__input"
+          autocomplete="name"
+          name="contact[name]"
+          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+          {% comment %} placeholder="{{ 'blocks.contact_form.name' | t }}" {% endcomment %}
+        >
+      </div>
 
-      <label
-        class="visually-hidden"
-        for="ContactForm-email"
-      >
-        {{- 'blocks.contact_form.email' | t -}}
-        <span aria-hidden="true">*</span></label
-      >
-      <input
-        type="email"
-        id="ContactForm-email"
-        class="contact-form__input"
-        autocomplete="email"
-        name="contact[email]"
-        spellcheck="false"
-        autocapitalize="off"
-        value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-        aria-required="true"
-        {% if form.errors contains 'email' %}
-          aria-invalid="true"
-          aria-describedby="ContactForm-email-error"
-        {% endif %}
-        placeholder="{{ 'blocks.contact_form.email' | t }}"
-      >
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="ContactForm-email">{{- 'blocks.contact_form.email' | t -}} <span aria-hidden="true">*</span></label>
+        <input
+          type="email"
+          id="ContactForm-email"
+          class="contact-form__input"
+          autocomplete="email"
+          name="contact[email]"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="ContactForm-email-error"
+          {% endif %}
+          {% comment %} placeholder="{{ 'blocks.contact_form.email' | t }}" {% endcomment %}
+        >
+      </div>
+
+      <div class="contact-form__field">
+        <label class="contact-form__label" for="ContactForm-phone">{{- 'blocks.contact_form.phone' | t -}}</label>
+        <input
+          type="tel"
+          id="ContactForm-phone"
+          class="contact-form__input"
+          autocomplete="tel"
+          name="contact[phone]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          {% comment %} placeholder="{{ 'blocks.contact_form.phone' | t }}" {% endcomment %}
+        >
+      </div>
     </div>
 
     <label
-      class="visually-hidden"
-      for="ContactForm-phone"
-    >
-      {{- 'blocks.contact_form.phone' | t -}}
-    </label>
-    <input
-      type="tel"
-      id="ContactForm-phone"
-      class="contact-form__input"
-      autocomplete="tel"
-      name="contact[phone]"
-      pattern="[0-9\-]*"
-      value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-      placeholder="{{ 'blocks.contact_form.phone' | t }}"
-    >
-
-    <label
-      class="visually-hidden"
+      class=""
       for="ContactForm-body"
     >
-      {{- 'blocks.contact_form.comment' | t -}}
+      {% comment %} {{- 'blocks.contact_form.comment' | t -}} {% endcomment %}
+      Message
     </label>
     <textarea
-      rows="10"
+      rows="3"
       id="ContactForm-body"
       class="contact-form__input contact-form__input--textarea"
       name="contact[body]"
-      placeholder="{{ 'blocks.contact_form.comment' | t }}"
+      {% comment %} placeholder="{{ 'blocks.contact_form.comment' | t }}" {% endcomment %}
     >
       {{- form.body -}}
     </textarea>
@@ -129,32 +120,50 @@
     gap: var(--gap-md);
   }
 
-  .contact-form__form-row {
-    display: flex;
-    flex-direction: column;
+  .contact-form__grid {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--gap-md);
 
     @media screen and (min-width: 750px) {
-      flex-direction: row;
-      align-items: center;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
     }
+  }
+
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-form__label {
+    font-size: 13px;
+    color: var(--color-text-muted);
   }
 
   .contact-form__input {
     width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
     color: var(--color-input-text);
-    background-color: var(--color-input-background);
-    padding: var(--padding-lg) var(--padding-xl);
-    border-radius: var(--style-border-radius-inputs);
-    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    background-color: transparent;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid var(--color-input-border);
+    border-radius: 0;
     -webkit-font-smoothing: antialiased;
+  }
+
+  .contact-form__input:focus-visible{
+    outline: none;
+    border-bottom-color: var(--color-primary);
   }
 
   .contact-form__input--textarea {
     resize: vertical;
-    min-height: var(--input-textarea-min-height);
+    min-height: calc(var(--input-textarea-min-height) * 1.4);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--color-input-border);
+    background-color: transparent;
   }
 
   .contact-form__error,
@@ -162,6 +171,23 @@
     display: flex;
     align-items: center;
     gap: var(--gap-xs);
+  }
+
+  /* Submit button styling (targets the rendered submit inside the captured block) */
+  .contact-form__form > *:where(button[type="submit"], .button) {
+    margin-top: var(--gap-lg);
+    background-color: #EAF96A; /* soft yellow */
+    color: var(--color-text);
+    border: 1px solid rgba(0,0,0,0.12);
+    padding: 12px 22px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-form__form > *:where(button[type="submit"], .button) svg {
+    transform: translateX(2px);
   }
 {% endstylesheet %}
 
