@@ -453,7 +453,7 @@ p:empty {
 
 /* Place all direct children in the center column by default */
 .section > * {
-  grid-column: 2;
+  grid-column: 1/4;
 }
 
 /* Make the actual section background transparent, and instead apply it to a separate sibling element to enable stacking with hero shadow  */
