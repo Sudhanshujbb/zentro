@@ -1,6 +1,6 @@
 
 
-<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div class="section-background color-{{ section.settings.color_scheme }}" style="{{ section.settings.background }}"></div>
 <div class="section page-width-content color-{{ section.settings.color_scheme }}">
   <div
     class="
@@ -67,6 +67,14 @@
       "label": "t:settings.color_scheme",
       "default": "scheme-1"
     },
+    {
+      "type": "textarea",
+      "id": "background",
+      "label": "t:settings.background",
+      "default": "background: linear-gradient(0deg, #EDEDF5 43.29%, rgba(246, 246, 210, 0.24) 66.44%), linear-gradient(0deg, #FDF5E9 0%, #EDEDF5 100%);"
+    },
+
+
     {
       "type": "header",
       "content": "t:content.padding"
