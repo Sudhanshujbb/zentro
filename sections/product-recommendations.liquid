@@ -81,7 +81,55 @@
       {% capture list_items %}
         {% for product in products limit: section.settings.max_products %}
           <div class="resource-list__item">
-            {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %}
+            {% comment %} {% content_for 'block', type: '_product-card', id: 'static-product-card', closest.product: product %} {% endcomment %}
+             {% assign compare = product.compare_at_price %}
+        {% assign price = product.price %}
+        {% if compare > price %}
+          {% assign discount = compare | minus: price | times: 100 | divided_by: compare %}
+        {% endif %}
+
+        <a href="{{ product.url }}" class="relax-card">
+          <div class="relax-image-wrapper">
+            {% if discount %}
+              <span class="relax-badge">
+                {{ discount | round }}% OFF
+              </span>
+            {% endif %}
+
+            <img
+              src="{{ product.featured_image | image_url: width: 800 }}"
+              alt="{{ product.title | escape }}"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="relax-card-content">
+            <h3 class="relax-title">{{ product.title }}</h3>
+
+            {% if product.metafields.reviews.rating.value %}
+              <div class="relax-rating">
+                {% assign rating = product.metafields.reviews.rating.value %}
+                {% for i in (1..5) %}
+                  {% if i <= rating %}
+                    ★
+                  {% else %}
+                    ☆
+                  {% endif %}
+                {% endfor %}
+                <span>{{ rating }}</span>
+              </div>
+            {% endif %}
+            <div class="relax-wrapper">
+            <div class="relax-price">
+              {% if compare > price %}
+                <span class="old-price">{{ compare | money }}</span>
+              {% endif %}
+              <span class="new-price">{{ price | money }}</span>
+              <span class="arrow">{% render 'icon', icon: 'arrow-new' %}</span>
+            </div>
+            </div>
+          </div>
+        </a>
           </div>
           {% unless forloop.last %}
             <!--@list/split-->
