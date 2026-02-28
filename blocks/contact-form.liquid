@@ -44,6 +44,7 @@
     {%- endif -%}
 
     <div class="contact-form__form-row">
+      <div class="contact-form__block">
       <label
         class=""
         for="ContactForm-name"
@@ -59,7 +60,8 @@
         value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
         {% comment %} placeholder="{{ 'blocks.contact_form.name' | t }}" {% endcomment %}
       >
-
+      </div>
+      <div class="contact-form__block">
       <label
         class=""
         for="ContactForm-email"
@@ -83,8 +85,9 @@
         {% endif %}
         {% comment %} placeholder="{{ 'blocks.contact_form.email' | t }}" {% endcomment %}
       >
+      </div>
     </div>
-
+    <div class="contact-form__block">
     <label
       class=""
       for="ContactForm-phone"
@@ -101,6 +104,9 @@
       value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
       {% comment %} placeholder="{{ 'blocks.contact_form.phone' | t }}" {% endcomment %}
     >
+    </div>
+
+    <div class="contact-form__block">
 
     <label
       class=""
@@ -116,7 +122,8 @@
       {% comment %} placeholder="{{ 'blocks.contact_form.comment' | t }}" {% endcomment %}
     >
       {{- form.body -}}
-    </textarea>
+    </textarea>\
+  </div>
 
     {{ submit_button }}
   {%- endform -%}
