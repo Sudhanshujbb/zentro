@@ -1443,8 +1443,8 @@ button.shopify-payment-button__button--unbranded {
 
 textarea,
 input {
-  /* background-color: var(--color-input-background); */
-  /* border-color: var(--color-input-border); */
+  background-color: var(--color-input-background);
+  border-color: var(--color-input-border);
 }
 
 textarea::placeholder,
