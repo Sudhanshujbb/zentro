@@ -1,0 +1,276 @@
+<style>
+  .product-specs {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: {{ section.settings.padding_left }}px;
+      padding-right: {{ section.settings.padding_right }}px;
+  }
+
+  .ps-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 60px;
+    margin-top: 30px;
+  }
+
+  .ps-heading > *{
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ps-icon{
+    max-width: 25%;
+  }
+  .ps-icon img {
+    /* height: 60px; */
+    margin-bottom: 10px;
+  }
+
+  .ps-highlight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 70px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .ps-highlight-text {
+    background: #ff2e2e;
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ps-highlight-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ps-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .ps-item img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    .ps-top {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ps-bottom {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .product-specs{
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        padding-left: {{ section.settings.padding_left_mobile }}px;
+        padding-right: {{ section.settings.padding_right_mobile }}px;
+    }
+    .ps-highlight {
+      grid-template-columns: 1fr;
+    }
+
+    .ps-highlight-text {
+      padding: 30px;
+    }
+
+    .ps-bottom {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+{% if product %}
+  <section
+    class="product-specs"
+    style="
+      background: linear-gradient(
+        {{ section.settings.gradient_angle }}deg,
+        {{ section.settings.gradient_color_1 }},
+        {{ section.settings.gradient_color_2 }}
+      );
+    "
+  >
+    <div class="page-width">
+
+        {% if section.settings.heading != blank %}
+            <div class="ps-heading">
+                {{ section.settings.heading }} 
+            </div>
+        {% endif %}    
+
+      {% if product.metafields.custom.top_features.value != blank %}
+        <div class="ps-top">
+          {% for feature in product.metafields.custom.top_features.value limit: 4 %}
+            <div class="ps-icon">
+              {% if feature.icon %}
+                <img src="{{ feature.icon | image_url: width: 120 }}" alt="">
+              {% endif %}
+              <p>{{ feature.title }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% assign highlight = product.metafields.custom.highlight_block.value %}
+
+      {% if highlight %}
+        <div class="ps-highlight">
+          <div class="ps-highlight-text">
+            <h3>{{ highlight.title }}</h3>
+            <p>{{ highlight.description }}</p>
+          </div>
+
+          <div class="ps-highlight-image">
+            {% if highlight.image %}
+              <img src="{{ highlight.image | image_url: width: 900 }}" alt="">
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if product.metafields.custom.bottom_features.value != blank %}
+        <div class="ps-bottom">
+          {% for feature in product.metafields.custom.bottom_features.value limit: 3 %}
+            <div class="ps-item">
+              {% if feature.image %}
+                <img src="{{ feature.image | image_url: width: 700 }}" alt="">
+              {% endif %}
+              <h4>{{ feature.title }}</h4>
+              <p>{{ feature.description }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Specs (Metafield)",
+  "settings": [
+    {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "default": "<h2>What's Included</h2>"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient Color 1",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient Color 2",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "gradient_angle",
+      "label": "Gradient Angle",
+      "min": 0,
+      "max": 360,
+      "step": 5,
+      "default": 180
+    },
+
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 80
+    },
+
+    {
+      "type": "range",
+      "id": "padding_left",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 80
+    },
+    {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Mobile Padding Top",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+        },
+        {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Mobile Padding Bottom",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+        },
+        {
+        "type": "range",
+        "id": "padding_left_mobile",
+        "label": "Mobile Padding Left",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+        },
+        {
+        "type": "range",
+        "id": "padding_right_mobile",
+        "label": "Mobile Padding Right",
+        "min": 0,
+        "max": 120,
+        "step": 5,
+        "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Specs"
+    }
+  ]
+}
+{% endschema %}

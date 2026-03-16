@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -57,6 +58,7 @@
         "text_YLPk4p",
         "button_H9gpTf"
       ],
+      "disabled": true,
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
@@ -65,6 +67,7 @@
         "custom_mobile_media": false,
         "media_type_1_mobile": "image",
         "media_type_2_mobile": "image",
+        "link": "",
         "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -261,6 +264,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "Featured collection",
       "settings": {
         "collection": "all",
@@ -281,10 +285,333 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "slideshow_banner2_L4KHeN": {
+      "type": "slideshow-banner2",
+      "blocks": {
+        "image_MtfWxP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_8.png",
+            "mobile_image": "shopify://shop_images/Section_9.png",
+            "image_link": ""
+          }
+        },
+        "image_HdH6fF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_7_db255a56-ead3-4b15-8dee-9c68eb8a6569.png",
+            "image_link": ""
+          }
+        },
+        "image_Q4j4Wn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_5.png",
+            "image_link": ""
+          }
+        },
+        "image_7EDUgJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_6.png",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_MtfWxP",
+        "image_HdH6fF",
+        "image_Q4j4Wn",
+        "image_7EDUgJ"
+      ],
+      "name": "Custom Slider",
+      "settings": {
+        "autoslide_time": 5
+      }
+    },
+    "wellnes_priority_w4bdCw": {
+      "type": "wellnes-priority",
+      "blocks": {
+        "feature_RLwzFh": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_4.svg",
+            "title": "Save 20% on cost",
+            "text": "Top-quality products at prices that make wellness affordable for everyone."
+          }
+        },
+        "feature_ECExFm": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_6.svg",
+            "title": "High Perceived Value",
+            "text": "Premium quality meets exceptional value. Every rupee you spend delivers real results."
+          }
+        },
+        "feature_LfxkpU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_7.svg",
+            "title": "Accurate Deliveries",
+            "text": "Your order arrives on time, every time. Reliable shipping with real-time tracking."
+          }
+        }
+      },
+      "block_order": [
+        "feature_RLwzFh",
+        "feature_ECExFm",
+        "feature_LfxkpU"
+      ],
+      "name": "Wellness Priority",
+      "settings": {
+        "heading": "Your Wellness, Our Priority",
+        "description": "At Zentro, we believe comfort and wellness should be accessible to everyone. We carefully curate innovative health and lifestyle products that genuinely improve your daily life.",
+        "bg_color": "#f8f9f8",
+        "heading_color": "#0f172a",
+        "text_color": "#475569",
+        "card_bg": "#ffffff",
+        "accent_color": "#2563eb"
+      }
+    },
+    "relaxation_section_mdWQ3m": {
+      "type": "relaxation-section",
+      "name": "Relaxation Products Collection",
+      "settings": {
+        "eyebrow": "#DESIGNED FOR EVERYBODY",
+        "heading": "Discover your perfect relaxation match",
+        "collection": "frontpage",
+        "products_limit": 3,
+        "card_radius": 20,
+        "bg_color": "#f3f4f6",
+        "text_color": "#111827",
+        "accent_color": "#eaff6a"
+      }
+    },
+    "trust_banner_nApF7d": {
+      "type": "trust-banner",
+      "blocks": {
+        "feature_jpxfCV": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/hand.svg",
+            "text": "Crafted with care to ensure safety for your health needs"
+          }
+        },
+        "feature_tnUxQp": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_8.svg",
+            "text": "100% vegan and cruelty-free. Zero compromises for a healthier you"
+          }
+        },
+        "feature_YmfrPY": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Black.svg",
+            "text": "Science-backed formulations to support your health and wellness"
+          }
+        }
+      },
+      "block_order": [
+        "feature_jpxfCV",
+        "feature_tnUxQp",
+        "feature_YmfrPY"
+      ],
+      "name": "Trusted By Section",
+      "settings": {
+        "bg_image": "shopify://shop_images/fb1dc1dfa10a5bbc0999d53bd470debedb92edee.jpg",
+        "overlay_opacity": 4,
+        "heading": "TRUSTED BY 3,000+ INSTAGRAMMERS, AGENCIES",
+        "description": "Wellness influencers and health enthusiasts trust Zentro to deliver products that actually work. Join thousands who’ve transformed their daily routines with our innovative solutions.",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "card_bg": "#ffffff",
+        "icon_color": "#2563eb"
+      }
+    },
+    "safe_checkout_gurantee_FtGjgd": {
+      "type": "safe-checkout-gurantee",
+      "blocks": {
+        "payment_icon_KXzFYX": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/Frame.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_7HVVLN": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/MasterCard.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_VckeR6": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/PayPal.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_9hVak3": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/svgviewer-output.svg",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_hNiXE3": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_KXzFYX",
+        "payment_icon_7HVVLN",
+        "payment_icon_VckeR6",
+        "payment_icon_9hVak3",
+        "payment_icon_hNiXE3"
+      ],
+      "name": "Safe Checkout & Guarantee",
+      "settings": {
+        "eyebrow": "#GUARANTEED SAFE CHECKOUT",
+        "heading": "7-Money Back Guarantee",
+        "description": "We're so confident in our products' promise, we offer a 7-day money-back guarantee. Not satisfied? Get a full refund—no questions asked.",
+        "bg_color": "#fff6ea",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "badge_color": "#111827"
+      }
+    },
+    "slideshow_banner2_bEc7kq": {
+      "type": "slideshow-banner2",
+      "blocks": {
+        "image_Rrt8Pq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_12_1.png",
+            "image_link": ""
+          }
+        },
+        "image_7Gnptw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_11_1.png",
+            "image_link": ""
+          }
+        },
+        "image_KaDwB7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Section_7_2.png",
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_Rrt8Pq",
+        "image_7Gnptw",
+        "image_KaDwB7"
+      ],
+      "name": "Custom Slider",
+      "settings": {
+        "autoslide_time": 5
+      }
+    },
+    "faq_rKx7mN": {
+      "type": "faq",
+      "blocks": {
+        "faq_zX9MDL": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products safe and tested?",
+            "answer": "<p>Absolutely! All our products undergo rigorous third-party testing for quality, purity, and safety. We follow strict manufacturing standards and source only premium, certified ingredients.</p>"
+          }
+        },
+        "faq_7CLjzX": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return and refund policy?",
+            "answer": "<p>We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.</p>"
+          }
+        },
+        "faq_9aNJj3": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I track my order?",
+            "answer": "<p>Yes! Once your order ships, you'll receive a tracking link via email and SMS.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_zX9MDL",
+        "faq_7CLjzX",
+        "faq_9aNJj3"
+      ],
+      "name": "FAQ – Help Section",
+      "settings": {
+        "eyebrow": "#ALL THE HELP YOU NEED",
+        "heading": "We know you are curious!",
+        "bg_color": "#fdf7ee",
+        "heading_color": "#111827",
+        "text_color": "#4b5563",
+        "divider_color": "#e5e7eb"
+      }
+    },
+    "custom_marquee_HKY9QH": {
+      "type": "custom-marquee",
+      "blocks": {
+        "text_wbKwzM": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_eB8dDX": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        },
+        "text_FRn9Je": {
+          "type": "text",
+          "settings": {
+            "text": "FESTIVE SALE"
+          }
+        }
+      },
+      "block_order": [
+        "text_wbKwzM",
+        "text_eB8dDX",
+        "text_FRn9Je"
+      ],
+      "name": "Custom Marquee",
+      "settings": {
+        "bg_color": "#eaf586",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "speed": 20,
+        "text_color": "#000000",
+        "font_size": 14,
+        "font_weight": "700",
+        "letter_spacing": 1,
+        "text_transform": "uppercase"
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "slideshow_banner2_L4KHeN",
+    "wellnes_priority_w4bdCw",
+    "relaxation_section_mdWQ3m",
+    "trust_banner_nApF7d",
+    "safe_checkout_gurantee_FtGjgd",
+    "slideshow_banner2_bEc7kq",
+    "faq_rKx7mN",
+    "custom_marquee_HKY9QH"
   ]
 }

@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "main-page",
@@ -68,10 +69,12 @@
         "title",
         "content"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "gap": 32,
         "color_scheme": "",
+        "background": "background: linear-gradient(0deg, #EDEDF5 43.29%, rgba(246, 246, 210, 0.24) 66.44%), linear-gradient(0deg, #FDF5E9 0%, #EDEDF5 100%);",
         "padding-block-start": 40,
         "padding-block-end": 0
       }
@@ -79,11 +82,63 @@
     "form": {
       "type": "section",
       "blocks": {
+        "text_xYDa6z": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Get Started</p>",
+            "width": "100%",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kHa9MH": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h1>Get in touch with us. We're here to assist you.</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "6.5rem",
+            "line_height": "tight",
+            "letter_spacing": "loose",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "contact_form_UwiCkQ": {
           "type": "contact-form",
           "settings": {
             "width": "custom",
-            "custom_width": 50,
+            "custom_width": 100,
             "width_mobile": "custom",
             "custom_width_mobile": 100,
             "inherit_color_scheme": true,
@@ -98,10 +153,10 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Submit",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
+                "label": "Leave us a Message",
+                "style_class": "button-secondary",
+                "width": "custom",
+                "custom_width": 30,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
               },
@@ -112,6 +167,8 @@
         }
       },
       "block_order": [
+        "text_xYDa6z",
+        "text_kHa9MH",
         "contact_form_UwiCkQ"
       ],
       "name": "t:names.contact_form",
@@ -127,7 +184,7 @@
         "section_width": "page-width",
         "section_height": "",
         "section_height_custom": 50,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -135,17 +192,129 @@
         "border_width": 1,
         "border_opacity": 100,
         "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
+        "toggle_overlay": true,
+        "overlay_color": "#fbfbf9",
         "overlay_style": "solid",
         "gradient_direction": "to top",
         "padding-block-start": 32,
         "padding-block-end": 84
       }
+    },
+    "relaxation_section_riKY6j": {
+      "type": "relaxation-section",
+      "name": "Relaxation Products Collection",
+      "settings": {
+        "eyebrow": "#DESIGNED FOR EVERYBODY",
+        "heading": "Discover your perfect relaxation match",
+        "collection": "frontpage",
+        "products_limit": 3,
+        "card_radius": 20,
+        "bg_color": "#f3f4f6",
+        "text_color": "#111827",
+        "accent_color": "#eaff6a"
+      }
+    },
+    "safe_checkout_gurantee_CaqL6D": {
+      "type": "safe-checkout-gurantee",
+      "blocks": {
+        "payment_icon_FNDHFV": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/PayPal.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_rBxdjy": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/MasterCard.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_CNjFih": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/Frame.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_Tddyk7": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_itE8QB": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_FNDHFV",
+        "payment_icon_rBxdjy",
+        "payment_icon_CNjFih",
+        "payment_icon_Tddyk7",
+        "payment_icon_itE8QB"
+      ],
+      "name": "Safe Checkout & Guarantee",
+      "settings": {
+        "eyebrow": "#GUARANTEED SAFE CHECKOUT",
+        "heading": "7-Money Back Guarantee",
+        "description": "We're so confident in our products' promise, we offer a 7-day money-back guarantee. Not satisfied? Get a full refund—no questions asked.",
+        "bg_color": "#fff6ea",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "badge_color": "#111827"
+      }
+    },
+    "faq_cjCxX4": {
+      "type": "faq",
+      "blocks": {
+        "faq_Ln8BgJ": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products safe and tested?",
+            "answer": "<p>Absolutely! All our products undergo rigorous third-party testing for quality, purity, and safety. We follow strict manufacturing standards and source only premium, certified ingredients.</p>"
+          }
+        },
+        "faq_A9XWti": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return and refund policy?",
+            "answer": "<p>We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.</p>"
+          }
+        },
+        "faq_PzXM7f": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I track my order?",
+            "answer": "<p>Yes! Once your order ships, you'll receive a tracking link via email and SMS.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_Ln8BgJ",
+        "faq_A9XWti",
+        "faq_PzXM7f"
+      ],
+      "name": "FAQ – Help Section",
+      "settings": {
+        "eyebrow": "#ALL THE HELP YOU NEED",
+        "heading": "We know you are curious!",
+        "bg_color": "#fdf7ee",
+        "heading_color": "#111827",
+        "text_color": "#4b5563",
+        "divider_color": "#e5e7eb"
+      }
     }
   },
   "order": [
     "main",
-    "form"
+    "form",
+    "relaxation_section_riKY6j",
+    "safe_checkout_gurantee_CaqL6D",
+    "faq_cjCxX4"
   ]
 }

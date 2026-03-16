@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "page-content": {
+          "type": "page-content",
+          "settings": {},
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "page-content"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 80
+      }
+    },
+    "wellnes_priority_ikr7Ti": {
+      "type": "wellnes-priority",
+      "blocks": {
+        "feature_h7T7w9": {
+          "type": "feature",
+          "settings": {
+            "title": "Save 20% on cost",
+            "text": "Top-quality products at prices that make wellness affordable for everyone."
+          }
+        },
+        "feature_ywyiVE": {
+          "type": "feature",
+          "settings": {
+            "title": "High Perceived Value",
+            "text": "Premium quality meets exceptional value. Every rupee you spend delivers real results."
+          }
+        },
+        "feature_6tAjfM": {
+          "type": "feature",
+          "settings": {
+            "title": "Accurate Deliveries",
+            "text": "Your order arrives on time, every time. Reliable shipping with real-time tracking."
+          }
+        }
+      },
+      "block_order": [
+        "feature_h7T7w9",
+        "feature_ywyiVE",
+        "feature_6tAjfM"
+      ],
+      "name": "Wellness Priority",
+      "settings": {
+        "heading": "Your Wellness, Our Priority",
+        "description": "At Zentro, we believe comfort and wellness should be accessible to everyone. We carefully curate innovative health and lifestyle products that genuinely improve your daily life.",
+        "bg_color": "#f8f9f8",
+        "heading_color": "#0f172a",
+        "text_color": "#475569",
+        "card_bg": "#ffffff",
+        "accent_color": "#2563eb"
+      }
+    },
+    "safe_checkout_gurantee_aDtGy9": {
+      "type": "safe-checkout-gurantee",
+      "blocks": {
+        "payment_icon_fcWbg9": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/PayPal.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_V7Magd": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/MasterCard.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_UiBXh6": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/Frame.png",
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_jwqdfr": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        },
+        "payment_icon_wMjRxp": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Secure payment"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_fcWbg9",
+        "payment_icon_V7Magd",
+        "payment_icon_UiBXh6",
+        "payment_icon_jwqdfr",
+        "payment_icon_wMjRxp"
+      ],
+      "name": "Safe Checkout & Guarantee",
+      "settings": {
+        "eyebrow": "#GUARANTEED SAFE CHECKOUT",
+        "heading": "7-Money Back Guarantee",
+        "description": "We're so confident in our products' promise, we offer a 7-day money-back guarantee. Not satisfied? Get a full refund—no questions asked.",
+        "bg_color": "#fff6ea",
+        "heading_color": "#111827",
+        "text_color": "#374151",
+        "badge_color": "#111827"
+      }
+    },
+    "trust_banner_KUc7zR": {
+      "type": "trust-banner",
+      "blocks": {
+        "feature_FHXBRp": {
+          "type": "feature",
+          "settings": {
+            "text": "Crafted with care to ensure safety for your health needs"
+          }
+        },
+        "feature_7MA788": {
+          "type": "feature",
+          "settings": {
+            "text": "100% vegan and cruelty-free. Zero compromises for a healthier you"
+          }
+        },
+        "feature_cyWQNk": {
+          "type": "feature",
+          "settings": {
+            "text": "Science-backed formulations to support your health and wellness"
+          }
+        }
+      },
+      "block_order": [
+        "feature_FHXBRp",
+        "feature_7MA788",
+        "feature_cyWQNk"
+      ],
+      "name": "Trusted By Section",
+      "settings": {
+        "bg_image": "shopify://shop_images/fb1dc1dfa10a5bbc0999d53bd470debedb92edee.jpg",
+        "overlay_opacity": 4,
+        "heading": "TRUSTED BY 3,000+ INSTAGRAMMERS, AGENCIES",
+        "description": "Wellness influencers and health enthusiasts trust Zentro to deliver products that actually work. Join thousands who’ve transformed their daily routines with our innovative solutions.",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "card_bg": "#ffffff",
+        "icon_color": "#2563eb"
+      }
+    },
+    "relaxation_section_gtrCmL": {
+      "type": "relaxation-section",
+      "name": "Relaxation Products Collection",
+      "settings": {
+        "eyebrow": "#DESIGNED FOR EVERYBODY",
+        "heading": "Discover your perfect relaxation match",
+        "collection": "frontpage",
+        "products_limit": 3,
+        "card_radius": 20,
+        "bg_color": "#f3f4f6",
+        "text_color": "#111827",
+        "accent_color": "#eaff6a"
+      }
+    },
+    "faq_gLGddW": {
+      "type": "faq",
+      "blocks": {
+        "faq_QCUUAp": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products safe and tested?",
+            "answer": "<p>Absolutely! All our products undergo rigorous third-party testing for quality, purity, and safety. We follow strict manufacturing standards and source only premium, certified ingredients.</p>"
+          }
+        },
+        "faq_BhCtch": {
+          "type": "faq",
+          "settings": {
+            "question": "What is your return and refund policy?",
+            "answer": "<p>We offer a 7-day money-back guarantee. If you're not satisfied, contact our support team for a full refund.</p>"
+          }
+        },
+        "faq_bTqLjG": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I track my order?",
+            "answer": "<p>Yes! Once your order ships, you'll receive a tracking link via email and SMS.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_QCUUAp",
+        "faq_BhCtch",
+        "faq_bTqLjG"
+      ],
+      "name": "FAQ – Help Section",
+      "settings": {
+        "eyebrow": "#ALL THE HELP YOU NEED",
+        "heading": "We know you are curious!",
+        "bg_color": "#fdf7ee",
+        "heading_color": "#111827",
+        "text_color": "#4b5563",
+        "divider_color": "#e5e7eb"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "wellnes_priority_ikr7Ti",
+    "safe_checkout_gurantee_aDtGy9",
+    "trust_banner_KUc7zR",
+    "relaxation_section_gtrCmL",
+    "faq_gLGddW"
+  ]
+}

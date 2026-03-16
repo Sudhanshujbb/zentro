@@ -1,0 +1,206 @@
+{% comment %}
+  Guaranteed Safe Checkout / Money Back Section
+{% endcomment %}
+
+<section
+  class="safe-checkout"
+  style="
+    --bg-color: {{ section.settings.bg_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --text-color: {{ section.settings.text_color }};
+    --badge-color: {{ section.settings.badge_color }};
+  "
+>
+  <div class="safe-container">
+
+    {% if section.settings.eyebrow != blank %}
+      <div class="safe-eyebrow">
+        {{ section.settings.eyebrow }}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="safe-icons">
+        {% for block in section.blocks %}
+          {% if block.settings.icon %}
+            <div class="safe-icon">
+              <img
+                src="{{ block.settings.icon | image_url: width: 120 }}"
+                alt="{{ block.settings.label | escape }}"
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="safe-heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <p class="safe-description">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+.safe-checkout {
+  background: var(--bg-color);
+  padding: 64px 20px;
+}
+
+.safe-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.safe-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  color: var(--badge-color);
+  font-weight: 600;
+}
+
+.safe-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.safe-icon {
+  background: #fff;
+  border-radius: 6px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.safe-icon img {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+}
+
+.safe-heading {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 12px;
+}
+
+.safe-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .safe-checkout {
+    padding: 48px 16px;
+  }
+
+  .safe-icon img {
+    height: 24px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Safe Checkout Guarantee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Top label",
+      "default": "#GUARANTEED SAFE CHECKOUT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "7-Money Back Guarantee"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We're so confident in our products' promise, we offer a 7-day money-back guarantee. Not satisfied? Get a full refund—no questions asked."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#fff6ea"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Top label color",
+      "default": "#111827"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "payment_icon",
+      "name": "Payment icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Payment / Trust icon"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Icon label (accessibility)",
+          "default": "Secure payment"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Safe Checkout & Guarantee",
+      "blocks": [
+        { "type": "payment_icon" },
+        { "type": "payment_icon" },
+        { "type": "payment_icon" },
+        { "type": "payment_icon" },
+        { "type": "payment_icon" }
+      ]
+    }
+  ]
+}
+{% endschema %}
