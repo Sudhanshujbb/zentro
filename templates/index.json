@@ -492,21 +492,21 @@
         "image_Rrt8Pq": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Section_12.png",
+            "image": "shopify://shop_images/Section_12_1.png",
             "image_link": ""
           }
         },
         "image_7Gnptw": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Section_11.png",
+            "image": "shopify://shop_images/Section_11_1.png",
             "image_link": ""
           }
         },
         "image_KaDwB7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Section_7.png",
+            "image": "shopify://shop_images/Section_7_2.png",
             "image_link": ""
           }
         }
@@ -596,7 +596,7 @@
         "speed": 20,
         "text_color": "#000000",
         "font_size": 14,
-        "font_weight": "600",
+        "font_weight": "700",
         "letter_spacing": 1,
         "text_transform": "uppercase"
       }
