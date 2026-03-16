@@ -1,0 +1,336 @@
+<div id="slider-{{ section.id }}" class="custom-slider">
+  <div class="slider-wrapper">
+    {% assign first = true %}
+    {% for block in section.blocks %}
+      <div class="slide">
+        {% if block.type == 'video' %}
+          <a href="{{block.settings.video2_link}}">
+            <video
+              class="slide-image desktop"
+              src="{{ block.settings.video_url.sources[1].url }}"
+              controls
+              autoplay
+              muted
+              loop
+              onmouseover="this.setAttribute('controls', 'true')"
+              onmouseout="this.removeAttribute('controls')"
+            ></video>
+            <video
+              class="slide-image mobile"
+              src="{{ block.settings.video_mobile_url.sources[1].url }}"
+              controls
+              autoplay
+              muted
+              loop
+              onmouseover="this.setAttribute('controls', 'true')"
+              onmouseout="this.removeAttribute('controls')"
+            ></video>
+          </a>
+        {% elsif block.settings.image %}
+          <a href="{{block.settings.image_link}}">
+            <img
+              class="slide-video  desktop"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="Slide Image"
+              {% if first %}
+                loading="eager" fetchpriority="high"
+              {% else %}
+                loading="lazy" fetchpriority="low"
+              {% endif %}
+            >
+
+            <img
+              class="slide-video mobile"
+              src="{{ block.settings.mobile_image | img_url: 'master' }}"
+              alt="Slide Image"
+              {% if first %}
+                loading="eager" fetchpriority="high"
+              {% else %}
+                loading="lazy" fetchpriority="low"
+              {% endif %}
+            >
+          </a>
+        {% endif %}
+        {% assign first = false %}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size > 1 %}
+    <div class="slider-dots">
+      {% for block in section.blocks %}
+        <span class="dot" data-index="{{ forloop.index0 }}"></span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <button class="prev">&lt;</button>
+  <button class="next">&gt;</button>
+</div>
+
+<style>
+  .slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .custom-slider{
+    overflow: hidden;
+  }
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.6s ease;
+  }
+  .slide {
+    min-width: 100%;
+    transition: transform 0.6s ease;
+  }
+  .slide img,
+  .slide video {
+    width: 100%;
+  }
+  .slider-dots {
+    position: relative;
+    text-align: center;
+    margin-top: -22px;
+    z-index: 10000;
+  }
+  .dot {
+    height: 6px;
+    width: 6px;
+    margin: 5px;
+    background-color: #c3c8cb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .dot.active {
+    height: 8px;
+    width: 8px;
+    background-color: #ffffff;
+  }
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: none;
+  }
+  .prev {
+    left: 10px;
+  }
+  .next {
+    right: 10px;
+  }
+
+  .slide-image,
+  .slide-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .desktop {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
+  }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll('.custom-slider').forEach(function(sliderSection){
+
+    const sliderWrapper = sliderSection.querySelector('.slider-wrapper');
+    const slides = sliderSection.querySelectorAll('.slide');
+    const dots = sliderSection.querySelectorAll('.dot');
+    const prevBtn = sliderSection.querySelector('.prev');
+    const nextBtn = sliderSection.querySelector('.next');
+
+    if (!sliderWrapper || slides.length <= 1) return;
+
+    let index = 0;
+    let startX = 0;
+    let currentX = 0;
+    let moved = false;
+    let autoSlideInterval;
+
+    const autoSlideTime = {{ section.settings.autoslide_time | default: 5 }} * 1000;
+
+    function updateSlider() {
+      sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      updateSlider();
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideInterval = setInterval(nextSlide, autoSlideTime);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+    }
+
+    /* Touch */
+    sliderWrapper.addEventListener('touchstart', e => {
+      startX = e.touches[0].clientX;
+      moved = false;
+      stopAutoSlide();
+    });
+
+    sliderWrapper.addEventListener('touchmove', e => {
+      currentX = e.touches[0].clientX;
+      if (Math.abs(startX - currentX) > 10) moved = true;
+    });
+
+    sliderWrapper.addEventListener('touchend', () => {
+      if (!moved) return startAutoSlide();
+      const diff = startX - currentX;
+      if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+      startAutoSlide();
+    });
+
+    /* Mouse */
+    sliderWrapper.addEventListener('mousedown', e => {
+      startX = e.clientX;
+      moved = false;
+      stopAutoSlide();
+    });
+
+    sliderWrapper.addEventListener('mousemove', e => {
+      if (e.buttons !== 1) return;
+      currentX = e.clientX;
+      if (Math.abs(startX - currentX) > 10) moved = true;
+    });
+
+    sliderWrapper.addEventListener('mouseup', () => {
+      if (moved) {
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+      }
+      startAutoSlide();
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        index = Number(dot.dataset.index);
+        updateSlider();
+        startAutoSlide();
+      });
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      prevSlide();
+      startAutoSlide();
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      nextSlide();
+      startAutoSlide();
+    });
+
+    updateSlider();
+    startAutoSlide();
+
+  });
+
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "Custom Slider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "autoslide_time",
+      "label": "Auto slide interval (seconds)",
+      "min": 2,
+      "max": 15,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Video Link",
+          "info": "Add the URL to redirect when the video is clicked"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video_url",
+          "label": "Desktop Video"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile_url",
+          "label": "Mobile Video"
+        },
+        {
+          "type": "url",
+          "id": "video2_link",
+          "label": "Video Link",
+          "info": "Add the URL to redirect when the video is clicked"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Slider"
+    }
+  ]
+}
+{% endschema %}
