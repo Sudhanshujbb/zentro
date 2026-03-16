@@ -1,0 +1,196 @@
+{% if product.metafields.custom.enable_live_timer == true %}
+  <div
+    class="live-sale-wrapper"
+    style="
+      background-image:url({{ section.settings.bg_image | image_url }});
+      background-size:cover;
+    "
+    data-end="{{ product.metafields.custom.timer_end }}"
+    data-watch="{{ product.metafields.custom.watching_count }}"
+  >
+    <div class="live-sale-top">
+      <div class="watching-icon">👁</div>
+
+      <div class="watching-text">
+        <span id="watch-count"></span> watching now —
+        {{ section.settings.sale_text }}
+      </div>
+    </div>
+
+    <div class="countdown-wrapper">
+      <div class="time-box">
+        <span id="hours">00</span>
+        <small>hr</small>
+      </div>
+
+      <div class="separator">:</div>
+
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <small>min</small>
+      </div>
+
+      <div class="separator">:</div>
+
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <small>sec</small>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+  <div class="progress-fill" id="progress-fill"></div>
+</div>
+  </div>
+{% endif %}
+
+<style>
+  .live-sale-wrapper{
+  padding:20px;
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  }
+
+  .live-sale-top{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#ff5a5a;
+  color:white;
+  padding:8px 16px;
+  border-radius:30px;
+  width:fit-content;
+  font-weight:600;
+  }
+
+  .countdown-wrapper{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:18px;
+  }
+
+  .time-box{
+  background:white;
+  border-radius:18px;
+  padding:10px 16px;
+  text-align:center;
+  min-width:70px;
+  }
+
+  .time-box span{
+  font-size:28px;
+  font-weight:700;
+  display:block;
+  }
+
+  .separator{
+  font-size:28px;
+  font-weight:700;
+  }
+
+  .progress-bar{
+  height:8px;
+  background:#eee;
+  border-radius:10px;
+  margin-top:20px;
+  overflow:hidden;
+  }
+
+.progress-fill{
+height:100%;
+width:0%;
+background:{{ section.settings.progress_color }};
+transition: width 1s linear;
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.live-sale-wrapper');
+    if (!container) return;
+
+    /* RANDOM CHANGE FUNCTION */
+
+    function updateWatchers(){
+        // increase or decrease randomly
+        const change = Math.floor(Math.random() * 30) - 10;
+
+        watch = watch + change;
+
+        if(watch < 100) watch = 100;
+        if(watch > 3000) watch = 3000;
+
+        document.getElementById('watch-count').innerText = watch.toLocaleString();
+
+        // next update between 1–10 seconds
+        const nextUpdate = (Math.floor(Math.random() * 10) + 1) * 1000;
+
+        setTimeout(updateWatchers, nextUpdate);
+    }
+
+    // start random updates
+    setTimeout(updateWatchers, (Math.floor(Math.random()*10)+1)*1000);
+
+
+    const endDate = new Date(container.dataset.end).getTime();
+    const startDate = new Date().getTime();
+    const totalDuration = endDate - startDate;
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if(distance <= 0){
+        document.getElementById("progress-fill").style.width = "100%";
+        return;
+    }
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+
+      const elapsed = now - startDate;
+      const progress = (elapsed / totalDuration) * 100;
+
+      document.getElementById("progress-fill").style.width = progress + "%";
+    }
+
+    setInterval(updateTimer, 1000);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product Live Sale Timer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "sale_text",
+      "label": "Sale Text",
+      "default": "Valentines Day Sale Extra 20% OFF Included"
+    },
+    {
+      "type": "color",
+      "id": "progress_color",
+      "label": "Progress Bar Color",
+      "default": "#ff4d4d"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Live Sale Timer"
+    }
+  ]
+}
+{% endschema %}
