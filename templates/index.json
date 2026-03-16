@@ -292,7 +292,8 @@
         "image_MtfWxP": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Section.png",
+            "image": "shopify://shop_images/Section_8.png",
+            "mobile_image": "shopify://shop_images/Section_9.png",
             "image_link": ""
           }
         },
