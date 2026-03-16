@@ -270,6 +270,15 @@
               },
               "block_order": []
             },
+            "product_live_sale_JjWgKB": {
+              "type": "product-live-sale",
+              "name": "Product Live Sale Timer",
+              "settings": {
+                "sale_text": "Valentines Day Sale Extra 20% OFF Included",
+                "progress_color": "#ff4d4d"
+              },
+              "blocks": {}
+            },
             "accordion_c63rkk": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -437,6 +446,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "product_live_sale_JjWgKB",
             "accordion_c63rkk",
             "text_aEtTtq"
           ]
