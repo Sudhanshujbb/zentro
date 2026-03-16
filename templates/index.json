@@ -336,6 +336,7 @@
         "feature_RLwzFh": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/Vector_4.svg",
             "title": "Save 20% on cost",
             "text": "Top-quality products at prices that make wellness affordable for everyone."
           }
@@ -343,6 +344,7 @@
         "feature_ECExFm": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/Vector_6.svg",
             "title": "High Perceived Value",
             "text": "Premium quality meets exceptional value. Every rupee you spend delivers real results."
           }
@@ -350,6 +352,7 @@
         "feature_LfxkpU": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/Vector_7.svg",
             "title": "Accurate Deliveries",
             "text": "Your order arrives on time, every time. Reliable shipping with real-time tracking."
           }
