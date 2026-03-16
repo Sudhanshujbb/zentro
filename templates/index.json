@@ -542,7 +542,7 @@
           "type": "faq",
           "settings": {
             "question": "Can I track my order?",
-            "answer": "<p>Yes! Once your order ships, you'll receive a tracking link via email and SMS.</p>"
+            "answer": "<p>Yes! Once your order is shipped, you'll receive an email with a tracking number and link. You can use this to monitor your package's journey in real-time. If you have any issues with tracking, our support team is here to help.</p>"
           }
         }
       },
