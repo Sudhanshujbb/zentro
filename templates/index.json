@@ -394,18 +394,21 @@
         "feature_jpxfCV": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/hand.svg",
             "text": "Crafted with care to ensure safety for your health needs"
           }
         },
         "feature_tnUxQp": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/Vector_8.svg",
             "text": "100% vegan and cruelty-free. Zero compromises for a healthier you"
           }
         },
         "feature_YmfrPY": {
           "type": "feature",
           "settings": {
+            "icon": "shopify://shop_images/Black.svg",
             "text": "Science-backed formulations to support your health and wellness"
           }
         }
@@ -454,6 +457,7 @@
         "payment_icon_9hVak3": {
           "type": "payment_icon",
           "settings": {
+            "icon": "shopify://shop_images/svgviewer-output.svg",
             "label": "Secure payment"
           }
         },
