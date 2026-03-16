@@ -340,7 +340,7 @@
                     "text_dCGUPc": {
                       "type": "text",
                       "settings": {
-                        "text": "<p><strong>4 Modes:</strong> The necklace massager with four different modes you can choose from to customize your massage experience based on your preferences and needs. </p><p><strong>9 Strength Levels: </strong>The massager offers 9 different strength levels, allowing you to adjust the strength of your massage to your desired level for maximum relaxation.</p><p> <strong>Intelligent Chip: </strong>Equipped with a stable intelligent chip, our neck massage necklace ensures that the massage force is consistent and steady, ensuring maximum comfort and efficacy. </p><p><strong>3 Gears Hot Compress:</strong> The necklace massager has three different levels of hot compress, providing a gentle heat therapy that helps to relax tired and sore muscles and encourages optimal healing. </p><p><strong>Dual Pulse: </strong>With advanced dual pulse technology, our neck massage necklace provides a professional massage experience and tension in your neck muscles like a massage master.  </p><p>Spec: </p><p>Item Type: Necklace Massager <br/>Material: ABS<br/>Battery: Lithium batteries (built in)  Package List: <br/>1 x Necklace Massager</p>",
+                        "text": "{{ closest.product.metafields.custom.shipping_warranty_text | metafield_tag }}",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
